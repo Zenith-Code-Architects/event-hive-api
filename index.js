@@ -1,4 +1,9 @@
 import express from "express";
+import mongoose from "mongoose";
+
+// Create database connection
+await mongoose.connect(process.env.connectString);
+console.log('Connected to event api database')
 
 //Create express app
 const app = express()
