@@ -3,7 +3,10 @@ import { EventModel } from "../models/event.js";
 // post events
 export const addEvents = async (req, res, next) => {
     try {
-        const addedEvent = await EventModel.create(req.body);
+        const addedEvent = await EventModel.create({
+            ...req.body,
+            banner: req.file.filename
+          });
         // return response
         res.status(200).json(`${req.body.name} added`);
     } catch (error) {
